@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\UsesrRequest;
+use App\User;
+use App\Role;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -16,7 +18,8 @@ class AdminUsersController extends Controller
     public function index()
     {
         //
-        return view('admin.users.index');
+        $users=User::all();
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -27,7 +30,9 @@ class AdminUsersController extends Controller
     public function create()
     {
         //
-        return view('admin.users.create');
+       /* $roles=Role::lists('name', 'id')->all(); //ne radi */ //ako bi stavili odmah all() bila bi kompilacija, a posto hocemo array onda koristimo lists
+       $roles=[''=>'---select option---'] + Role::Lists("name", "id")->toArray();
+        return view('admin.users.create', compact("roles"));
     }
 
     /**
@@ -36,9 +41,12 @@ class AdminUsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UsesrRequest $request)
     {
         //
+        //za proveru forme return $request->all();
+        User::create($request->all());
+        return redirect('/admin/users');
     }
 
     /**
