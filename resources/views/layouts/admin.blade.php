@@ -58,7 +58,7 @@
 
 
         <ul class="nav navbar-top-links navbar-right">
-
+            
 
             <!-- /.dropdown -->
             <li class="dropdown">
@@ -95,6 +95,7 @@
         {{--<li><a href="{{ url('/auth/register') }}">Register</a></li>--}}
         {{--@endif--}}
         {{--@else--}}
+       
         {{--<li class="dropdown">--}}
         {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ auth()->user()->name }} <span class="caret"></span></a>--}}
         {{--<ul class="dropdown-menu" role="menu">--}}
@@ -147,11 +148,11 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i> Posts<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/posts">All Posts</a>
+                                <a href="{{route('admin.posts.index')}}">All Posts</a>
                             </li>
 
                             <li>
-                                <a href="/posts/create">Create Post</a>
+                                <a href="{{route('admin.posts.create')}}">Create Post</a>
                             </li>
 
                         </ul>
