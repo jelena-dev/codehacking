@@ -5,6 +5,7 @@ use App\Http\Requests\PostsCreateRequest;
 use App\Post;
 use App\User;
 use App\Photo;
+use App\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -35,7 +36,8 @@ class AdminPostsController extends Controller
     public function create()
     {
         //
-        return view('admin.posts.create');
+        $categories=[''=> '---select category---'] + Category::lists('name', 'id')->toArray();
+        return view('admin.posts.create', compact('categories'));
     }
 
     /**
@@ -51,9 +53,9 @@ class AdminPostsController extends Controller
        $user=Auth::user();
        if($file=$request->file('photo_id'))
        {
-         $name= time() . $file->getclientOriginalName();
+         $name= time() . $file->getClientOriginalName();
          $file->move('images', $name);
-         $photo= Photo::create(['file'=>'name']);
+         $photo= Photo::create(['file'=>$name]);
          $input['photo_id']=$photo->id;         
 
        }
