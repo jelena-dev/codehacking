@@ -25,7 +25,7 @@
             @foreach($posts as $post)
                 <tr>
                 <td>{{$post->id}}</td>
-                <td>{{$post->user->name}}</td>
+                <td><a href="{{route('admin.posts.edit', $post->id)}}">{{$post->user->name}}</a></td>
                 <td><img height="100" src="{{$post->photo ? $post->photo->file : ' https://24smi.org/public/media/dummy_image.png' }}" alt=""></td>
                 <td>{{$post->category->name}}</td>
                 <td>{{$post->title}}</td>
