@@ -21,7 +21,7 @@
     {{-- <link rel="stylesheet" href="{{ asset('css/libs/font-awesome.css') }}"> --}}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('css/libs/styles.css') }}">
-    
+    @yield('styles')
 
     <!--<link href="{{asset('css/libs.css')}}" rel="stylesheet">-->
 
@@ -180,11 +180,11 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Media<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/media">All Media</a>
+                                <a href="{{route('admin.media.index')}}">All Media</a>
                             </li>
 
                             <li>
-                                <a href="">Upload Media</a>
+                                <a href="{{route('admin.media.create')}}">Upload Media</a>
                             </li>
 
                         </ul>
@@ -365,7 +365,8 @@
 <script src="{{ asset('js/libs/scripts.js') }}"></script>
 
 
-@yield('footer')
+
+@yield('scripts')
 
 
 
