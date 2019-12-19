@@ -7,7 +7,7 @@
 <h1>Edit Post</h1>
 <div class="row">
     <div class="col-sm-6">
-        <img src="{{$post->photo->file}}" class="img-responsive" alt="">
+        <img src="{{$post->photo ? $post->photo->file : 'https://via.placeholder.com/350x150'}}" alt="" class="img-responsive img-rounded">
     </div>
 
 
